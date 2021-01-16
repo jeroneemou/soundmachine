@@ -7,7 +7,7 @@
       </div>
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          Welcome to the Vuetify + Nuxt.js template {{test.a}}
         </v-card-title>
         <v-card-text>
           <p>
@@ -80,14 +80,25 @@
   </v-row>
 </template>
 
-<script>
+<script lang="ts">
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import TestInterface from "../src/test";
+import Vue, {PropOptions} from 'vue';
 
-export default {
+const a: TestInterface = {
+  a: "Aha!"
+};
+
+export default Vue.extend({
   components: {
     Logo,
     VuetifyLogo,
   },
-}
+  data () {
+    return {
+      test: a
+    }
+  }
+})
 </script>
